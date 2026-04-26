@@ -1,14 +1,9 @@
-# IDMap: A Pseudo-Speaker Generator Framework Based on Speaker Identity Index to Vector Mapping
-
+# A FEEDFORWARD PSEUDO-SPEAKER GENERATOR IN VOICE ANONYMIZATION FOR ENHANCED UNIQUENESS AND EFFICIENCY
 ## Demo Page
 
 This repository provides audio samples for the paper:
 
-**IDMap: A Pseudo-Speaker Generator Framework Based on Speaker Identity Index to Vector Mapping**
-
-## Abstract
-
-Facilitated by the speech generation framework that disentangles speech into content, speaker, and prosody, voice anonymization is accomplished by substituting the original speaker embedding vector with that of a pseudo-speaker. In this framework, the pseudo-speaker generation forms a fundamental challenge. Current pseudo-speaker generation methods demonstrate limitations in the uniqueness of pseudo-speakers, consequently restricting their effectiveness in voice privacy protection. Besides, existing model-based methods suffer from heavy computation costs. Especially in the large-scale scenario where a huge number of pseudo-speakers are generated, the limitations of uniqueness and computational inefficiency become more significant. To this end, this paper proposes a framework for pseudo-speaker generation, which establishes a mapping from speaker identity index to speaker vector in the feedforward architecture, termed IDMap. Specifically, the framework is specified into two models: IDMap-MLP and IDMap-Diff. Experiments were conducted on both small- and large-scale evaluation datasets. Small-scale evaluations on the LibriSpeech dataset validated the effectiveness of the proposed IDMap framework in enhancing the uniqueness of pseudo-speakers, thereby improving voice privacy protection, while at a reduced computational cost. Large-scale evaluations on the MLS and Common Voice datasets further justified the superiority of the IDMap framework regarding the stability of the voice privacy protection capability as the number of pseudo-speakers increased.
+**A FEEDFORWARD PSEUDO-SPEAKER GENERATOR IN VOICE ANONYMIZATION FOR ENHANCED UNIQUENESS AND EFFICIENCY**
 
 ---
 

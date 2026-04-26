@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>IDMap Audio Demo</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --border: #d8dee6;
+      --accent: #1f4e79;
+      --accent-light: #eef5fb;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      font-style: italic;
+      color: #111827;
+      margin-bottom: 34px;
+    }
+
+    .abstract-box {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 34px;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+
+    .abstract-box h2 {
+      text-align: center;
+      margin: 0 0 16px;
+      font-size: 25px;
+      color: #000;
+    }
+
+    .abstract-box p {
+      margin: 0;
+      font-size: 17px;
+      text-align: justify;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      color: #111827;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 8px;
+      margin: 48px 0 22px;
+    }
+
+    .legend {
+      margin: 0 0 20px;
+      padding: 16px 20px;
+      background: var(--accent-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #374151;
+      font-size: 15px;
+    }
+
+    .legend strong {
+      color: #111827;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1240px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border);
+      padding: 12px 10px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f3f6f9;
+      color: #111827;
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    td {
+      background: #ffffff;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .file-name {
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 14px;
+      color: #111827;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    audio {
+      width: 155px;
+      height: 34px;
+    }
+
+    .audio-link {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .audio-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 56px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 32px 14px 56px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      .abstract-box {
+        padding: 22px 20px;
+      }
+
+      .abstract-box p {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      audio {
+        width: 135px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header>
+      <h1>
+        IDMap: A Pseudo-Speaker Generator Framework<br />
+        Based on Speaker Identity Index to Vector Mapping
+      </h1>
+
+      <div class="subtitle">Audio demo page</div>
+
+      <section class="abstract-box">
+        <h2>Abstract</h2>
+        <p>
+          Facilitated by the speech generation framework that disentangles speech into content, speaker, and prosody, voice anonymization is accomplished by substituting the original speaker embedding vector with that of a pseudo-speaker. In this framework, the pseudo-speaker generation forms a fundamental challenge. Current pseudo-speaker generation methods demonstrate limitations in the uniqueness of pseudo-speakers, consequently restricting their effectiveness in voice privacy protection. Besides, existing model-based methods suffer from heavy computation costs. Especially in the large-scale scenario where a huge number of pseudo-speakers are generated, the limitations of uniqueness and computational inefficiency become more significant. To this end, this paper proposes a framework for pseudo-speaker generation, which establishes a mapping from speaker identity index to speaker vector in the feedforward architecture, termed IDMap. Specifically, the framework is specified into two models: IDMap-MLP and IDMap-Diff. Experiments were conducted on both small- and large-scale evaluation datasets. Small-scale evaluations on the LibriSpeech dataset validated the effectiveness of the proposed IDMap framework in enhancing the uniqueness of pseudo-speakers, thereby improving voice privacy protection, while at a reduced computational cost. Large-scale evaluations on the MLS and Common Voice datasets further justified the superiority of the IDMap framework regarding the stability of the voice privacy protection capability as the number of pseudo-speakers increased.
+        </p>
+
+        <div class="note">
+          For each utterance, the same sample ID is used across all displayed methods.
+        </div>
+      </section>
+    </header>
+
+    <section>
+      <h2 class="section-title">Selected Audio Samples</h2>
+
+      <div class="legend">
+        <strong>Methods:</strong>
+        Original speech, random selection (RS), average-based method, PSD, GAN-based method, and the proposed IDMap-based anonymizer.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>File name</th>
+              <th>Original</th>
+              <th>RS</th>
+              <th>Average</th>
+              <th>PSD</th>
+              <th>GAN</th>
+              <th>Proposed</th>
+            </tr>
+          </thead>
+
+          <tbody id="audio-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Demo page for IDMap audio samples.
+    </footer>
+  </main>
+
+  <script>
+    const FILES = [
+      "1272-128104-0000.wav",
+      "1462-170138-0000.wav",
+      "251-118436-0001.wav",
+      "84-121123-0000.wav"
+    ];
+
+    const METHODS = [
+      {
+        title: "Original",
+        folder: "Original"
+      },
+      {
+        title: "RS",
+        folder: "RS/wav"
+      },
+      {
+        title: "Average",
+        folder: "Average/wav"
+      },
+      {
+        title: "PSD",
+        folder: "PSD/wav"
+      },
+      {
+        title: "GAN",
+        folder: "GAN/wav"
+      },
+      {
+        title: "Proposed",
+        folder: "Proposed/wav"
+      }
+    ];
+
+    function encodePath(path) {
+      return path
+        .split("/")
+        .map(part => encodeURIComponent(part))
+        .join("/");
+    }
+
+    function createAudioCell(methodFolder, fileName) {
+      const td = document.createElement("td");
+
+      const path = `${methodFolder}/${fileName}`;
+      const encodedPath = encodePath(path);
+
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.preload = "none";
+      audio.src = encodedPath;
+
+      const link = document.createElement("a");
+      link.className = "audio-link";
+      link.href = encodedPath;
+      link.textContent = "open audio";
+      link.target = "_blank";
+      link.rel = "noopener";
+
+      td.appendChild(audio);
+      td.appendChild(link);
+
+      return td;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById("audio-table-body");
+
+      FILES.forEach(fileName => {
+        const row = document.createElement("tr");
+
+        const fileCell = document.createElement("td");
+        fileCell.className = "file-name";
+        fileCell.textContent = fileName;
+        row.appendChild(fileCell);
+
+        METHODS.forEach(method => {
+          row.appendChild(createAudioCell(method.folder, fileName));
+        });
+
+        tbody.appendChild(row);
+      });
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>

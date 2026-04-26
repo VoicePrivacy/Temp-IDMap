@@ -7,6 +7,9 @@ This repository provides audio samples for the paper:
 
 ---
 
+## Demo Page
+# You can access the audio samples at  [https://voiceprivacy.github.io/IDMap/].
+
 ## Audio Samples
 
 The audio samples are organized by pseudo-speaker generation method.  

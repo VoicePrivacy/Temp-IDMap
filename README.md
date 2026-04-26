@@ -8,7 +8,7 @@ This repository provides audio samples for the paper:
 ---
 
 ## Demo Page
-# You can access the audio samples at  [https://voiceprivacy.github.io/IDMap/].
+# You can access the audio samples at  [https://voiceprivacy.github.io/Temp-IDMap/].
 
 ## Audio Samples
 
